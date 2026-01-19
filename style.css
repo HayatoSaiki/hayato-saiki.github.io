@@ -1,0 +1,391 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  background: #ffffff;
+  color: #222;
+  line-height: 1.8;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigation */
+/* Navigation */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+
+  padding: 16px 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+
+  border-bottom: 1px solid #eee;
+  font-size: 1.15rem;
+}
+
+
+.topnav a {
+  position: relative;
+  color: #556;              /* 通常時は控えめ */
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.25s ease, font-weight 0.25s ease;
+}
+
+/* 下線（最初は見えない） */
+.topnav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 100%;
+  height: 1.5px;
+  background: #3d6eff;      /* 青め */
+  transform: scaleX(0);
+  transform-origin: center;   /* ← ここがポイント */
+  transition: transform 0.25s ease;
+}
+
+/* アクティブ時 */
+.topnav a.active {
+  color: #3d6eff;
+  text-shadow: 0.3px 0 0 currentColor;
+}
+
+
+
+.topnav a.active::after {
+  transform: scaleX(1);
+}
+
+
+.topnav a:hover {
+  color: #000;
+}
+
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  margin-top: 40px;
+  align-items: start;   /* ← これ */
+}
+
+.hero-text {
+  transform: translateY(-18px);
+  padding-top: 0;
+  margin-top: 0;
+}
+.hero-text {
+  align-self: start;    /* ← 追加 */
+}
+
+.hero-image img {
+  display: block;      /* ← これが超重要 */
+  width: 100%;
+  border-radius: 6px;
+}
+.hero-image {
+  margin-top: 4px;
+}
+
+
+.hero-text h1 {
+  font-size: 3.0rem;
+  font-weight: 600;
+  margin-top: 0;        /* ← 追加 */
+  margin-bottom: 0;
+}
+
+
+.meta {
+  font-size: 1.05rem;
+  color: #777;
+  margin-bottom: 1.8rem;
+  transform: translateY(-5px);
+}
+
+.hero-text .pub-meta {
+  font-weight: 500; /* 固定 */
+}
+
+.hero-text .pub-meta .pub-venue,
+.hero-text .pub-meta .pub-link {
+  text-shadow: 0.35px 0 0 currentColor;
+}
+
+.meta a {
+  color: #777;
+}
+
+.hero-text p {
+  font-size: 1.15rem;   /* ← 重要 */
+  line-height: 1.8;     /* ← 行間を広げる */
+  max-width: 600px;
+  color: #333;
+  transform: translateY(-20px);
+}
+
+
+/* Sections */
+section {
+  scroll-margin-top: 115px;
+}
+
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+section p {
+  max-width: 720px;
+}
+
+/* Footer */
+footer {
+  margin-top: 120px;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-image img {
+    max-width: 360px;
+  }
+}
+@media (max-width: 900px) {
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .meta {
+    font-size: 1rem;
+  }
+
+  .hero-text p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+}
+
+/* Publications */
+.pub-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+
+.pub-thumb img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.pub-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.pub-authors {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.pub-venue {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.pub-links a {
+  font-size: 0.9rem;
+  color: #555;
+  text-decoration: none;
+}
+
+.pub-links a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .pub-item {
+    grid-template-columns: 1fr;
+  }
+
+  .pub-thumb img {
+    max-width: 240px;
+  }
+}
+
+
+/* Page fade-in (without header) */
+.container {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+h2 {
+  position: relative;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 32px;
+  padding-bottom: 10px; /* 線との距離 */
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+}
+
+
+.section-title {
+  position: relative;
+  padding-left: 36px;   /* ロゴ分の余白 */
+  padding-bottom: 10px;
+  margin-bottom: 32px;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+/* 下線（前に作ったやつ） */
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+}
+
+/* 共通アイコン設定 */
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.20em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+
+.section-title::before {
+  width: 32px;
+  height: 32px;
+}
+
+
+.section-title.publications::before {
+  background-image: url("assets/paper.png");
+}
+
+.section-title.experience::before {
+  background-image: url("assets/work.png");
+}
+
+.section-title.awards::before {
+  background-image: url("assets/award.png");
+}
+
+/* Academic section: tighten spacing */
+#honors-awards h3 + .pub-item,
+#honors-awards h3 + .pub-item ~ .pub-item {
+  margin-bottom: 24px;   /* カード同士 */
+}
+
+#honors-awards .pub-title {
+  margin-bottom: 2px;
+  line-height: 1.25;
+}
+
+#honors-awards .pub-venue {
+  margin-bottom: 2px;
+  line-height: 1.35;
+}
+
+
+/* Work Experience: tighten spacing */
+#experience .pub-item {
+  margin-bottom: 32px;   /* cards 同士 */
+}
+
+#experience .pub-title {
+  margin-bottom: 2px;
+  line-height: 1.25;
+}
+
+#experience .pub-venue {
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+/* bullet list */
+#experience .experience-list {
+  margin-top: 8px;
+  padding-left: 18px;
+}
+
+#experience .experience-list li {
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.pub-meta {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.pub-meta a {
+  color: #555;
+  text-decoration: none;
+}
+
+.pub-meta a:hover {
+  text-decoration: underline;
+}
+
+.pub-sep {
+  margin: 0 6px;
+  color: #aaa;
+}
