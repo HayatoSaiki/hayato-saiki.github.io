@@ -16,6 +16,11 @@ html {
   scroll-behavior: smooth;
 }
 
+.pub-award {
+  color: #c69200;
+  font-weight: 700;
+}
+
 /* Navigation */
 /* Navigation */
 .topnav {
@@ -130,8 +135,9 @@ html {
 }
 
 .meta a {
-  color: #777;
+  color: var(--accent-orange);
 }
+
 
 .hero-text p {
   font-size: 1.15rem;   /* ← 重要 */
@@ -377,9 +383,15 @@ h2::after {
 }
 
 .pub-meta a {
-  color: #555;
+  color: #3d6eff;
   text-decoration: none;
+  font-weight: 500;
 }
+
+.pub-meta a:hover {
+  text-decoration: underline;
+}
+
 
 .pub-meta a:hover {
   text-decoration: underline;
@@ -388,4 +400,20 @@ h2::after {
 .pub-sep {
   margin: 0 6px;
   color: #aaa;
+}
+
+
+:root {
+  --accent-orange: #3d6eff;
+}
+
+
+.person-link {
+  color: var(--accent-orange);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.person-link:hover {
+  text-decoration: underline;
 }
